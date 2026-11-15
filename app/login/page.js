@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 import { authClient } from "@/lib/auth-client";
 
 export default function LoginPage() {
@@ -25,8 +25,8 @@ export default function LoginPage() {
     router.push(nextPage());
   }
 
-  async function googleLogin() {
-    await authClient.signIn.social({ provider: "google", callbackURL: nextPage() });
+  async function githubLogin() {
+    await authClient.signIn.social({ provider: "github", callbackURL: nextPage() });
   }
 
   return (
@@ -40,8 +40,8 @@ export default function LoginPage() {
             {busy ? <span className="loading loading-spinner" /> : "Login"}
           </button>
           <div className="divider my-0">or</div>
-          <button type="button" onClick={googleLogin} className="btn btn-outline">
-            <FcGoogle className="text-xl" /> Continue with Google
+          <button type="button" onClick={githubLogin} className="btn btn-outline">
+            <FaGithub className="text-xl" /> Continue with GitHub
           </button>
           <p className="text-center text-sm">
             New here? <Link href="/register" className="link link-primary">Create an account</Link>
